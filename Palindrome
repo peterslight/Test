@@ -1,0 +1,64 @@
+public class Palindrome {
+
+    public static void main(String[] args) {
+    
+        //input word into the console and get notified if it is a palindrome or not or if its oof by 1 character placement
+        //getPalindrome()
+        
+        //validate if a given compile time word is a palindrome
+        //isPalindrome("madam")
+        
+    }
+    
+    public static boolean isPalindrome(String word) {
+        StringBuilder reverse = new StringBuilder();
+
+        int countOffset = 0;
+        int length = word.length();
+        for (int i = length - 1; i >= 0; i--) {
+            reverse.append(word.charAt(i));
+        }
+
+        for (int x = 0; x < reverse.length(); x++) {
+            char org = word.charAt(x);
+            char rev = reverse.toString().charAt(x);
+            if (!Character.toString(org).equals(Character.toString(rev))) {
+                countOffset = countOffset + 1;
+            }
+        }
+        if (word.equalsIgnoreCase(reverse.toString()))
+            return true;
+        else
+            return false;
+    }
+    
+     private static void getPalindrome() {
+        String original;
+        StringBuilder reverse = new StringBuilder();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter a string to check palindrome");
+        original = in.nextLine();
+        int countOffset = 0;
+        int length = original.length();
+        for (int i = length - 1; i >= 0; i--) {
+            reverse.append(original.charAt(i));
+        }
+
+        for (int x = 0; x < reverse.length(); x++) {
+            char org = original.charAt(x);
+            char rev = reverse.toString().charAt(x);
+            if (!Character.toString(org).equals(Character.toString(rev))) {
+                countOffset = countOffset + 1;
+            }
+
+        }
+
+        if (original.equals(reverse.toString()))
+            System.out.println("String is a palindrome.");
+        else if (countOffset == 2)
+            System.out.println("is Palindrome but off by 1");
+        else
+            System.out.println("string isn't a palindrome.");
+
+    }
+}
